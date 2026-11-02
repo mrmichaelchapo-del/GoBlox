@@ -1,0 +1,56 @@
+// package.json5
+// GoBlox 🐿️ — Application Manifest
+// Human-friendly config (JSON5). Validated against ./schemas.json
+
+{
+  "name": "GoBlox",
+  "version": "0.1.0",
+  "description": "A block-based desktop app platform with a Go backend.",
+  "author": "MichaelChapoDel",
+  "license": "MIT",
+
+  // ── App Requirements ─────────────────────────────
+  // What GoBlox needs to boot. The Go server reads this
+  // first, then loads and validates everything below.
+  "appNeeds": {
+    // Unified schema definitions (block + config)
+    // REQUIRED: blocks without a valid <mode> are rejected.
+    "schemas": "./schemas.json",
+
+    // Go server entry point
+    "api": "server/setup.go",
+
+    // Block XML definitions
+    "blocks": "./blocks",
+
+    // Minimum runtime requirements
+    "requires": {
+      "go": ">=1.22",
+      "json5": true
+    }
+  },
+
+  // ── Block Loading Rules ──────────────────────────
+  // How the server treats blocks at startup.
+  "blocks": {
+    "root": "./blocks",
+    // Categories are trusted via <mode>; a block
+    // missing or failing <mode> is not loaded.
+    "requireMode": true,
+    "strict": true
+  },
+
+  // ── Build Targets ────────────────────────────────
+  "targets": {
+    "windows": { "enabled": true,  "arch": ["amd64", "arm64"] },
+    "macos":   { "enabled": true,  "arch": ["arm64", "amd64"] },
+    "linux":   { "enabled": false, "arch": ["amd64"] }
+  },
+
+  // ── Metadata ─────────────────────────────────────
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrmichaelchapo-del/GoBlox.git"
+  },
+  "keywords": ["goblox", "blocks", "desktop", "xml", "json5", "go"]
+}
