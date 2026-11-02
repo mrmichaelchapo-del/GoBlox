@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Sound Block: Play Sound
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/sound/playsound.xml
+  Category:  Sound
+  Renderer:  WebGL (visual) + Web Audio (sound)
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Plays a sound effect. By default it plays a built-in
+    Hamster squeak 🐹🔊, but the sound name can be swapped
+    via the `sound` parameter.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="sound">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Play sound Squeak</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".sound"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       What the block actually does at runtime.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform — "play" is a sound action -->
+    <action>play</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- How far (unused for sound, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Visual renderer is WebGL; sound uses Web Audio -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for sound, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       Which sound to play.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- Name of the sound asset to play -->
+    <param
+      name="sound"
+      type="string"
+      value="squeak"
+    />
+
+  </params>
+
+</block>
