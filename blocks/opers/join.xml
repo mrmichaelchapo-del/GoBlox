@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Operators Block: Join
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/opers/join.xml
+  Category:  Operators
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Joins two values together into a single string.
+    For example, "apple" + "sauce" → "applesauce".
+    Handy for building dynamic text from parameters.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="opers">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Join apple and sauce</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".opers"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Concatenate two values into one string.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>scale</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for join, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for join, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       The two strings to join.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- First value -->
+    <param
+      name="value1"
+      type="string"
+      value="apple"
+    />
+
+    <!-- Second value -->
+    <param
+      name="value2"
+      type="string"
+      value="sauce"
+    />
+
+  </params>
+
+</block>
