@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Operators Block: Multiply
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/opers/multiply.xml
+  Category:  Operators
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Multiplies two numbers together: () * ().
+    Returns the product as a number. Useful for scaling
+    values, sizes, and scores.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="opers">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>() * ()</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".opers"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Multiply two numbers together.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>multiply</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for multiply, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for multiply, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       The two numbers to multiply.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- First operand -->
+    <param
+      name="a"
+      type="number"
+      value="1"
+    />
+
+    <!-- Second operand -->
+    <param
+      name="b"
+      type="number"
+      value="1"
+    />
+
+  </params>
+
+</block>
