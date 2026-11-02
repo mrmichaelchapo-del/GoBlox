@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Motion Block: Go To Y
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/motion/gotoy.xml
+  Category:  Motion
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Moves the Hamster sprite to an exact Y coordinate,
+    keeping its X position unchanged.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="motion">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Go to y: 0</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".motion"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Jump straight to a Y coordinate.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>move</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- The Y coordinate to jump to -->
+    <steps>0</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Moving along the Y axis -->
+    <axis>y</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- Target Y coordinate -->
+    <param
+      name="y"
+      type="number"
+      value="0"
+      min="-1000"
+      max="1000"
+    />
+
+  </params>
+
+</block>
