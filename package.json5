@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "description": "A block-based desktop app platform with a Go backend.",
   "author": "MichaelChapoDel",
-  "license": "MIT",
+  "license": "Apache-2.0",
 
   // ── App Requirements ─────────────────────────────
   // What GoBlox needs to boot. The Go server reads this
