@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Operators Block: Function Struct / Array
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/opers/struct.xml
+  Category:  Operators
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Builds a structured value (list/array) from a name
+    and a list of items: () fn struct = [].
+    Useful for grouping values before passing them into
+    other blocks or the Go server.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="opers">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>() fn struct = []</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".opers"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Build a struct (list) from a name and values.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>join</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for struct, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for struct, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       Struct name + initial items.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- Name of the struct -->
+    <param
+      name="name"
+      type="string"
+      value=""
+    />
+
+    <!-- Initial items, comma-separated -->
+    <param
+      name="items"
+      type="string"
+      value=""
+    />
+
+  </params>
+
+</block>
