@@ -23,3 +23,46 @@ And yes — there's a Hamster. 🐹
 ---
 
 ## Project Structure
+
+
+---
+
+## The Block Library 🧱
+
+| Category | Blocks | What they do |
+|---|---|---|
+| 🏃 **Motion** | `Movesteps`, `Turnblocks`, `Measureblocks`, `gotox`, `gotoy` | Move & turn the Hamster |
+| 👁️ **Looks** | `show`, `hideblocks` | Show / hide the sprite |
+| 🔊 **Sound** | `playsound`, `pausesound` | Play & pause audio |
+| 🧮 **Operators** | `join`, `join3`, `struct`, `add`, `multiply`, `subtract` | Math & text |
+| 🎬 **Events** | `whenclicked` | Start when ▶️ is clicked |
+
+**16 blocks and counting!** 🎉
+
+---
+
+## Block Anatomy
+
+Every block follows the same shape:
+
+```xml
+<block type="motion">
+  <text>Move 10 steps</text>
+
+  <!-- REQUIRED: the trust anchor 🔍 -->
+  <mode chip="web" define=".motion"></mode>
+
+  <behavior>
+    <action>move</action>
+    <target>hamster</target>
+    <steps>10</steps>
+    <renderer>webgl</renderer>
+    <axis>x</axis>
+  </behavior>
+
+  <params>
+    <param name="steps" type="number" value="10" min="1" max="1000" />
+    <param name="axis" type="string" value="x" enum="x,y" />
+  </params>
+</block>
+```
