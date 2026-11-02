@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Events Block: When Clicked
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/events/whenclicked.xml
+  Category:  Events
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    The classic hat block. Runs when the ▶️ play button is
+    clicked. Everything under this block starts when the
+    user hits play.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="events">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>When ▶️ clicked</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".events"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Wait for the play button to be clicked.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform — "wait" triggers the hat -->
+    <action>wait</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for events, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for events, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       Which event to listen for.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <param
+      name="event"
+      type="string"
+      value="clicked"
+    />
+
+  </params>
+
+</block>
