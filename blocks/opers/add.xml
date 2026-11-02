@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Operators Block: Add
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/opers/add.xml
+  Category:  Operators
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Adds two numbers together: () + ().
+    Returns the sum as a number. Useful for computing
+    positions, distances, or scores.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="opers">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>() + ()</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".opers"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Add two numbers together.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>join</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for add, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for add, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       The two numbers to add.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- First operand -->
+    <param
+      name="a"
+      type="number"
+      value="0"
+    />
+
+    <!-- Second operand -->
+    <param
+      name="b"
+      type="number"
+      value="0"
+    />
+
+  </params>
+
+</block>
