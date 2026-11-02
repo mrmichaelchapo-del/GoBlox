@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mrmichaelchapo-del/GoBlox/schemas.json",
+  "title": "GoBlox Schemas",
+  "description": "Merged block and config schemas for GoBlox.",
+
+  "type": "object",
+  "properties": {
+    "config": { "$ref": "#/$defs/config" },
+    "block": { "$ref": "#/$defs/block" }
+  },
+  "required": ["config", "block"],
+
+  "$defs": {
+
+    "config": {
+      "title": "App Manifest",
+      "description": "Validates package.json5 against the app requirements.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "description": { "type": "string" },
+        "author": { "type": "string" },
+        "license": { "type": "string" },
+        "appNeeds": {
+          "type": "object",
+          "properties": {
+            "schemas": { "type": "string" },
+            "api": { "type": "string" },
+            "blocks": { "type": "string" },
+            "requires": {
+              "type": "object",
+              "properties": {
+                "go": { "type": "string" },
+                "json5": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "required": ["schemas", "api", "blocks"],
+          "additionalProperties": false
+        },
+        "targets": { "type": "object" },
+        "repository": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "url": { "type": "string", "format": "uri" }
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["name", "version", "appNeeds"],
+      "additionalProperties": true
+    },
+
+    "block": {
+      "title": "Block Definition",
+      "description": "Validates XML blocks in blocks/. <mode> is REQUIRED and is the trust anchor for category.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["motion", "looks", "sound", "control", "events"]
+        },
+        "text": { "type": "string", "minLength": 1 },
+        "mode": {
+          "type": "object",
+          "description": "Defines the block category. Blocks failing this are NOT loaded.",
+          "properties": {
+            "chip": {
+              "type": "string",
+              "enum": ["web", "desktop", "server"]
+            },
+            "define": {
+              "type": "string",
+              "pattern": "^\\.[a-z][a-z0-9-]*$"
+            }
+          },
+          "required": ["chip", "define"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["type", "text", "mode"],
+      "additionalProperties": false
+    }
+  }
+}
