@@ -86,6 +86,48 @@
           },
           "required": ["chip", "define"],
           "additionalProperties": false
+        },
+        "behavior": {
+          "type": "object",
+          "description": "What the block actually does at runtime.",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": ["move", "rotate", "scale", "wait", "play", "stop"]
+            },
+            "target": { "type": "string", "minLength": 1 },
+            "steps": { "type": "number", "minimum": 1 },
+            "renderer": {
+              "type": "string",
+              "enum": ["webgl", "canvas", "dom"]
+            },
+            "axis": { "type": "string", "enum": ["x", "y"] }
+          },
+          "required": ["action", "target"],
+          "additionalProperties": false
+        },
+        "params": {
+          "type": "array",
+          "description": "User-adjustable parameters for the block.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "type": {
+                "type": "string",
+                "enum": ["number", "string", "boolean"]
+              },
+              "value": {},
+              "min": { "type": "number" },
+              "max": { "type": "number" },
+              "enum": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "required": ["name", "type", "value"],
+            "additionalProperties": false
+          }
         }
       },
       "required": ["type", "text", "mode"],
