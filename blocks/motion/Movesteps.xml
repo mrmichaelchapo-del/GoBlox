@@ -1,4 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Motion Block: Move Steps
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/motion/Movesteps.xml
+  Category:  Motion
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Moves the Hamster sprite 🐹 a given number of steps along
+    an axis, rendered with WebGL on the Electron desktop app.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
 <block type="motion">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       What the user sees on the block itself.
+       ───────────────────────────────────────────── -->
   <text>Move 10 steps</text>
-   <mode chip="web" define=".motion"><mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".motion"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       What the block actually does at runtime.
+       Read by Electron's WebGL renderer.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>move</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- How far to move (in steps) -->
+    <steps>10</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Direction of movement: x (horizontal) or y (vertical) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       User-adjustable values. These let the block be
+       reused without editing the XML itself.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- How many steps to move -->
+    <param
+      name="steps"
+      type="number"
+      value="10"
+      min="1"
+      max="1000"
+    />
+
+    <!-- Which axis to move along -->
+    <param
+      name="axis"
+      type="string"
+      value="x"
+      enum="x,y"
+    />
+
+  </params>
+
 </block>
