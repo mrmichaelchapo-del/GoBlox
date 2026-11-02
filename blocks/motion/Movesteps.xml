@@ -1,0 +1,4 @@
+<block type="motion">
+  <text>Move 10 steps</text>
+   <mode chip="web" define=".motion"><mode>
+</block>
