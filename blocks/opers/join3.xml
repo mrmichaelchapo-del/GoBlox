@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Operators Block: Join (3-way)
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/opers/join3.xml
+  Category:  Operators
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Joins three values together into a single string:
+    join () () () → "abc".
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="opers">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>join () () ()</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".opers"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Concatenate three values into one string.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>join</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for join, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for join, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       The three values to join.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <param name="value1" type="string" value="" />
+
+    <param name="value2" type="string" value="" />
+
+    <param name="value3" type="string" value="" />
+
+  </params>
+
+</block>
