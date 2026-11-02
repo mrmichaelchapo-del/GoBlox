@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Looks Block: Hide
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/looks/hide.xml
+  Category:  Looks
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Hides the Hamster sprite. The sprite keeps its position
+    and rotation, but is not drawn on screen. Pair with a
+    Show block to bring it back.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="looks">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Hide</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".looks"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       What the block actually does at runtime.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform — "hide" is a looks action -->
+    <action>hide</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- How far (unused for hide, but required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for visibility, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       Hide takes no user parameters — visibility is
+       a simple toggle. Params left empty is valid.
+       ───────────────────────────────────────────── -->
+  <params>
+  </params>
+
+</block>
