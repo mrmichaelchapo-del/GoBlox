@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Sound Block: Audio Context
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/sound/audiocontext.xml
+  Category:  Sound
+  Renderer:  WebGL (visual) + Web Audio (sound)
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Creates or resumes the Web Audio AudioContext.
+    No external scripts needed — AudioContext is built
+    into Electron's Chromium! Just call new AudioContext().
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="sound">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Start audio context</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".sound"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       Create/resume the AudioContext.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>play</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- Steps (unused for audio, required by schema) -->
+    <steps>1</steps>
+
+    <!-- Visual renderer is WebGL; sound uses Web Audio -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for audio, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       AudioContext options.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- Sample rate in Hz (0 = browser default) -->
+    <param
+      name="sampleRate"
+      type="number"
+      value="44100"
+      min="8000"
+      max="96000"
+    />
+
+    <!-- Resume if suspended (browsers require a gesture!) -->
+    <param
+      name="resume"
+      type="boolean"
+      value="true"
+    />
+
+  </params>
+
+</block>
