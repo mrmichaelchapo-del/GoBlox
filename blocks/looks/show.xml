@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Looks Block: Show
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/looks/show.xml
+  Category:  Looks
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Makes the Hamster sprite visible. If the sprite was hidden
+    by a Hide block, Show brings it back on screen.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="looks">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       ───────────────────────────────────────────── -->
+  <text>Show</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".looks"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       What the block actually does at runtime.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform — "show" is a looks action -->
+    <action>show</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- How far (unused for show, but required by schema) -->
+    <steps>1</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Axis (unused for visibility, kept for validation) -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       Show takes no user parameters — visibility is
+       a simple toggle. Params left empty is valid.
+       ───────────────────────────────────────────── -->
+  <params>
+  </params>
+
+</block>
