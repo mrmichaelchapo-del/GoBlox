@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ═══════════════════════════════════════════════════════════
+  GoBlox 🐿️ — Motion Block: Turn Degrees
+  ═══════════════════════════════════════════════════════════
+  File:      blocks/motion/Turnblocks.xml
+  Category:  Motion
+  Renderer:  WebGL
+  Author:    MrMichaelChapoDel
+
+  Description:
+    Rotates the Hamster sprite 🐹 by a given number of degrees,
+    rendered with WebGL on the Electron desktop app.
+
+  Trust Rule:
+    <mode> is REQUIRED. If <mode> is missing or invalid,
+    GoBlox will NOT load this block.
+  ═══════════════════════════════════════════════════════════
+-->
+
+<block type="motion">
+
+  <!-- ─────────────────────────────────────────────
+       1. DISPLAY
+       What the user sees on the block itself.
+       ───────────────────────────────────────────── -->
+  <text>Turn 15 degrees</text>
+
+
+  <!-- ─────────────────────────────────────────────
+       2. MODE  (REQUIRED — TRUST ANCHOR 🔍)
+       Defines the block's category and runtime target.
+       Missing or invalid <mode> = block is NOT loaded.
+       ───────────────────────────────────────────── -->
+  <mode chip="web" define=".motion"></mode>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. BEHAVIOR
+       What the block actually does at runtime.
+       Read by Electron's WebGL renderer.
+       ───────────────────────────────────────────── -->
+  <behavior>
+
+    <!-- The action to perform -->
+    <action>rotate</action>
+
+    <!-- Which sprite this affects -->
+    <target>hamster</target>
+
+    <!-- How far to turn (in degrees) -->
+    <steps>15</steps>
+
+    <!-- Which rendering backend handles it -->
+    <renderer>webgl</renderer>
+
+    <!-- Rotation is angular — we still pass the axis
+         field so it validates. Rotation spins on Z. -->
+    <axis>x</axis>
+
+  </behavior>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. PARAMETERS
+       User-adjustable values. These let the block be
+       reused without editing the XML itself.
+       ───────────────────────────────────────────── -->
+  <params>
+
+    <!-- How many degrees to turn -->
+    <param
+      name="degrees"
+      type="number"
+      value="15"
+      min="-360"
+      max="360"
+    />
+
+    <!-- Rotation axis (kept for schema compatibility) -->
+    <param
+      name="axis"
+      type="string"
+      value="x"
+      enum="x,y"
+    />
+
+  </params>
+
+</block>
